@@ -1,0 +1,11 @@
+{
+  "display_name": "XiaoBaiDraw",
+  "name": "XiaoBaiDraw",
+  "version": "1.0.0",
+  "description": "从 LittleWhiteBox 提取的纯生图插件，支持 NovelAI / SD WebUI / ComfyUI 三种后端，并内置“下载生图到本地”功能（兼容网页与 App/WebView，App 内无右键菜单时可直接下载）。",
+  "author": "LittleWhiteBox (extracted)",
+  "js": "index.js",
+  "css": "style.css",
+  "settings": "settings.html",
+  "generate_interceptor": "xiaobaixGenerateInterceptor"
+}

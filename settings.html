@@ -1,0 +1,41 @@
+<div class="inline-drawer">
+  <div class="inline-drawer-toggle inline-drawer-header">
+    <b>XiaoBaiDraw 生图</b>
+    <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+  </div>
+  <div class="inline-drawer-content">
+    <div class="littlewhitebox settings-grid">
+      <div class="section-divider">AI 画图
+        <hr class="sysHR" />
+      </div>
+      <div class="flex-container alignItemsCenter littlewhitebox-setting-row littlewhitebox-select-row">
+        <label for="xiaobaix_draw_provider"
+               class="has-tooltip"
+               data-tooltip="选择生图后端。使用 SD WebUI / ComfyUI 时，请在“画图设置”里填写连接地址。">
+          画图后端
+        </label>
+        <select id="xiaobaix_draw_provider" class="text_pole littlewhitebox-compact-select">
+          <option value="disabled">关闭</option>
+          <option value="novelai">NovelAI</option>
+          <option value="sdwebui">SD WebUI</option>
+          <option value="comfyui">ComfyUI</option>
+        </select>
+        <button id="xiaobaix_draw_open_settings"
+                class="menu_button menu_button_icon littlewhitebox-row-action"
+                type="button"
+                title="打开画图详细设置（连接地址 / 模型 / 提示词预设 / 画廊管理等）">
+          <i class="fa-solid fa-palette"></i>
+          <small>画图设置</small>
+        </button>
+      </div>
+      <div class="section-divider">使用说明
+        <hr class="sysHR" />
+      </div>
+      <div class="flex-container littlewhitebox-setting-row" style="opacity:.85;font-size:.92em;line-height:1.6">
+        在聊天中发送生图指令即可出图；鼠标悬停图片右上角菜单可
+        <b>下载到本地</b>（兼容网页与 App/WebView）。
+        详细配置点击上方“画图设置”。
+      </div>
+    </div>
+  </div>
+</div>
