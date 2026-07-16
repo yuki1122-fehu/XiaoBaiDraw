@@ -2,7 +2,7 @@
 // 服务器文件存储工具
 // ═══════════════════════════════════════════════════════════════════════════
 
-import { getRequestHeaders } from '../../../../../script.js';
+import { getRequestHeaders } from '../../../../script.js';
 import { debounce } from '../../../../utils.js';
 
 const toBase64 = (text) => btoa(unescape(encodeURIComponent(text)));

@@ -3,7 +3,7 @@
  * 支持 NovelAI / SD WebUI / ComfyUI 三种后端，
  * 并内置“下载生图到本地”（兼容网页与 App/WebView）。
  */
-import { extension_settings, saveSettingsDebounced } from "../../../../script.js";
+import { extension_settings, saveSettingsDebounced } from "../../../script.js";
 import { EXT_FOLDER_ID, EXT_ID, extensionFolderPath } from "./core/constants.js";
 import { initNovelDraw, cleanupNovelDraw } from "./modules/draw/providers/novelai/novel-draw.js";
 import { initSdDraw, cleanupSdDraw } from "./modules/draw/providers/sd-webui/sd-draw.js";

@@ -2,7 +2,7 @@
 
 import { getContext } from "../../../../../../../extensions.js";
 import { saveBase64AsFile } from "../../../../../../../utils.js";
-import { getRequestHeaders } from "../../../../../../../../script.js";
+import { getRequestHeaders } from "../../../../../../../script.js";
 import { extensionFolderPath } from "../../../../core/constants.js";
 import { createModuleEvents, event_types } from "../../../../core/event-manager.js";
 import { SdDrawStorage } from "../../../../core/server-storage.js";
@@ -4053,7 +4053,7 @@ export async function generateAndInsertImages({
         message.mes = String(message.mes || '').replace(/\[image:[a-z0-9\-_]+\]/gi, '');
 
         onStateChange?.('gen', { current: 0, total: tasks.length });
-        const { messageFormatting } = await import('../../../../../../../../script.js');
+        const { messageFormatting } = await import('../../../../../../../script.js');
         const results = [];
         let successCount = 0;
         let requiresFinalDomSync = false;

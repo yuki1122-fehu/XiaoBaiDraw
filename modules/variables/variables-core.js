@@ -5,7 +5,7 @@
  */
 
 import { extension_settings, getContext } from "../../../../../extensions.js";
-import { updateMessageBlock } from "../../../../../../script.js";
+import { updateMessageBlock } from "../../../../../script.js";
 import { getLocalVariable, setLocalVariable } from "../../../../../variables.js";
 import { createModuleEvents, event_types } from "../../core/event-manager.js";
 import { xbLog, CacheRegistry } from "../../core/debug-core.js";

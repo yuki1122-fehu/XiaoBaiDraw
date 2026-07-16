@@ -2837,7 +2837,7 @@ async function generateAndInsertImages({ messageId, onStateChange, skipLock = fa
         onStateChange?.('gen', { current: 0, total: tasks.length });
 
         const results = [];
-        const { messageFormatting } = await import('../../../../../../../../script.js');
+        const { messageFormatting } = await import('../../../../../../../script.js');
         let successCount = 0;
         let requiresFinalDomSync = false;
 

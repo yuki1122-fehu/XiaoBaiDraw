@@ -4,7 +4,7 @@ import { EXT_ID } from "../core/constants.js";
 import { xbLog, CacheRegistry } from "../core/debug-core.js";
 import { replaceXbGetVarInString } from "./variables/var-commands.js";
 import { executeSlashCommand } from "../core/slash-command.js";
-import { default_user_avatar, default_avatar } from "../../../../../script.js";
+import { default_user_avatar, default_avatar } from "../../../../script.js";
 import { getIframeBaseScript, getWrapperScript } from "../core/wrapper-inline.js";
 import { postToIframe, getIframeTargetOrigin, getTrustedOrigin } from "../core/iframe-messaging.js";
 const MODULE_ID = 'iframeRenderer';

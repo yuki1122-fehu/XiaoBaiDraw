@@ -1,4 +1,4 @@
-import { chat, eventSource, event_types, getRequestHeaders, name1, name2, substituteParams } from "../../../../../../../script.js";
+import { chat, eventSource, event_types, getRequestHeaders, name1, name2, substituteParams } from "../../../../../../script.js";
 import { chat_completion_sources, getChatCompletionModel, getStreamingReply, oai_settings } from "../../../../../../../scripts/openai.js";
 import { replaceXbGetVarInString, replaceXbGetVarYamlInString } from "../../variables/var-commands.js";
 import { resolveApiBaseUrl, getDefaultApiPrefix } from "../../../shared/common/openai-url-utils.js";

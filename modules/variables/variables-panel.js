@@ -1,5 +1,5 @@
 import { extension_settings, getContext, saveMetadataDebounced } from "../../../../../extensions.js";
-import { saveSettingsDebounced, chat_metadata } from "../../../../../../script.js";
+import { saveSettingsDebounced, chat_metadata } from "../../../../../script.js";
 import { getLocalVariable, setLocalVariable, getGlobalVariable, setGlobalVariable } from "../../../../../variables.js";
 import { extensionFolderPath } from "../../core/constants.js";
 import { createModuleEvents, event_types } from "../../core/event-manager.js";
