@@ -6,6 +6,5 @@
   "author": "LittleWhiteBox (extracted)",
   "js": "index.js",
   "css": "style.css",
-  "settings": "settings.html",
   "generate_interceptor": "xiaobaixGenerateInterceptor"
 }

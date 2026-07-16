@@ -302,6 +302,11 @@ jQuery(async () => {
     }
 
     try {
+        // 手动加载 settings.html（manifest 的 settings 字段不会自动加载）
+        const ctx = SillyTavern.getContext();
+        const settingsHtml = await ctx.renderExtensionTemplateAsync('third-party/' + EXT_FOLDER_ID, 'settings');
+        document.getElementById('extensions_settings2')?.insertAdjacentHTML('beforeend', settingsHtml);
+
         await setupSettings();
         await initActiveDrawProvider();
     } catch (e) {
