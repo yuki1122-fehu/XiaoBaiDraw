@@ -3,10 +3,12 @@
  * @description 变量斜杠命令与宏替换，常驻模块
  */
 
-import { getContext } from "../../../../../extensions.js";
-import { getLocalVariable, setLocalVariable } from "../../../../../variables.js";
 import { createModuleEvents, event_types } from "../../core/event-manager.js";
 import jsYaml from "../../libs/js-yaml.mjs";
+
+const getContext = globalThis.getContext;
+const getLocalVariable = globalThis.getLocalVariable;
+const setLocalVariable = globalThis.setLocalVariable;
 import {
     lwbSplitPathWithBrackets,
     lwbSplitPathAndValue,

@@ -1,7 +1,8 @@
 import { xbLog } from "../../../core/debug-core.js";
 import { callDrawScenePlannerLlm } from "./draw-llm.js";
-import { getWorldInfoPrompt } from "../../../../../../../scripts/world-info.js";
 import jsyaml from "../../../libs/js-yaml.mjs";
+
+const getWorldInfoPrompt = globalThis.getWorldInfoPrompt;
 
 const EMPTY_PROMPT_CONFIG = {
     topSystem: '',

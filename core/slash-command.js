@@ -1,4 +1,5 @@
-import { getContext } from "../../../../extensions.js";
+const getContext = globalThis.getContext;
+
 
 /**
  * 执行 SillyTavern 斜杠命令

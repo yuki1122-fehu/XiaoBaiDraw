@@ -3,12 +3,14 @@
  * 支持 NovelAI / SD WebUI / ComfyUI 三种后端，
  * 并内置“下载生图到本地”（兼容网页与 App/WebView）。
  */
-import { extension_settings, saveSettingsDebounced } from "../../../script.js";
 import { EXT_FOLDER_ID, EXT_ID, extensionFolderPath } from "./core/constants.js";
 import { initNovelDraw, cleanupNovelDraw } from "./modules/draw/providers/novelai/novel-draw.js";
 import { initSdDraw, cleanupSdDraw } from "./modules/draw/providers/sd-webui/sd-draw.js";
 import { initComfyDraw, cleanupComfyDraw } from "./modules/draw/providers/comfyui/comfy-draw.js";
 import { setupDrawGenerateInterceptor } from "./modules/draw/shared/draw-common.js";
+
+const extension_settings = globalThis.extension_settings;
+const saveSettingsDebounced = globalThis.saveSettingsDebounced;
 
 const DRAW_PROVIDER_VALUES = new Set(['disabled', 'novelai', 'sdwebui', 'comfyui']);
 

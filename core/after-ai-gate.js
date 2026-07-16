@@ -1,5 +1,6 @@
-import { getContext } from "../../../../extensions.js";
 import { xbLog } from "./debug-core.js";
+
+const getContext = globalThis.getContext;
 
 const MODULE_ID = "afterAiGate";
 const READY_TIMEOUT_MS = 2000;

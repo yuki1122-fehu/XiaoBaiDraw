@@ -1,8 +1,5 @@
 // sd-draw.js
 
-import { getContext } from "../../../../../../../extensions.js";
-import { saveBase64AsFile } from "../../../../../../../utils.js";
-import { getRequestHeaders } from "../../../../../../../script.js";
 import { extensionFolderPath } from "../../../../core/constants.js";
 import { createModuleEvents, event_types } from "../../../../core/event-manager.js";
 import { SdDrawStorage } from "../../../../core/server-storage.js";
@@ -37,6 +34,11 @@ import {
     normalizeSharedCacheDays,
 } from "../../shared/draw-settings.js";
 import { fetchDrawLlmModels, getLastDrawLlmRequestSnapshot } from "../../shared/draw-llm.js";
+
+const getContext = globalThis.getContext;
+const getRequestHeaders = globalThis.getRequestHeaders;
+const messageFormatting = globalThis.messageFormatting;
+const saveBase64AsFile = globalThis.saveBase64AsFile;
 import {
     findLastAIMessageId,
     createPlaceholder,
@@ -4053,7 +4055,7 @@ export async function generateAndInsertImages({
         message.mes = String(message.mes || '').replace(/\[image:[a-z0-9\-_]+\]/gi, '');
 
         onStateChange?.('gen', { current: 0, total: tasks.length });
-        const { messageFormatting } = await import('../../../../../../../script.js');
+        const messageFormatting = globalThis.messageFormatting;
         const results = [];
         let successCount = 0;
         let requiresFinalDomSync = false;

@@ -1,4 +1,3 @@
-import { getContext } from "../../../../../../extensions.js";
 import {
     getDisplayPreviewForSlot,
     getPreviewsBySlot,
@@ -7,6 +6,8 @@ import {
 } from "./gallery-cache.js";
 import { LLMServiceError } from "./scene-planner.js";
 import { createModuleEvents, event_types } from "../../../core/event-manager.js";
+
+const getContext = globalThis.getContext;
 
 const PLACEHOLDER_REGEX = /\[image\s*:\s*([a-z0-9\-_]+)\]/gi;
 const DRAW_IMAGE_HTML_REGEX = /<div\b[^>]*class=(["'])[^"']*\bxb-nd-img\b[^"']*\1[^>]*>[\s\S]*?<\/div>/gi;

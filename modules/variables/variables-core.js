@@ -4,9 +4,6 @@
  * @description Includes plot-log parsing, snapshot rollback, and variable guard
  */
 
-import { extension_settings, getContext } from "../../../../../extensions.js";
-import { updateMessageBlock } from "../../../../../script.js";
-import { getLocalVariable, setLocalVariable } from "../../../../../variables.js";
 import { createModuleEvents, event_types } from "../../core/event-manager.js";
 import { xbLog, CacheRegistry } from "../../core/debug-core.js";
 import { initAfterAiGate, notifyAfterAiHint, registerAfterAiHandler } from "../../core/after-ai-gate.js";
@@ -30,6 +27,12 @@ import {
     parseValueForSet,  
 } from "./var-commands.js";
 import { applyStateForMessage } from "./state2/index.js";
+
+const extension_settings = globalThis.extension_settings;
+const getContext = globalThis.getContext;
+const getLocalVariable = globalThis.getLocalVariable;
+const setLocalVariable = globalThis.setLocalVariable;
+const updateMessageBlock = globalThis.updateMessageBlock;
 import {
     preprocessBumpAliases,
     executeQueuedVareventJsAfterTurn,

@@ -1,8 +1,17 @@
-import { chat, eventSource, event_types, getRequestHeaders, name1, name2, substituteParams } from "../../../../../../script.js";
-import { chat_completion_sources, getChatCompletionModel, getStreamingReply, oai_settings } from "../../../../../../../scripts/openai.js";
 import { replaceXbGetVarInString, replaceXbGetVarYamlInString } from "../../variables/var-commands.js";
-import { resolveApiBaseUrl, getDefaultApiPrefix } from "../../../shared/common/openai-url-utils.js";
 import { readSseEventsFromResponse } from "../../../shared/host-llm/chat-completions/sse.js";
+
+const chat = globalThis.chat;
+const chat_completion_sources = globalThis.chat_completion_sources;
+const eventSource = globalThis.eventSource;
+const event_types = globalThis.event_types;
+const getChatCompletionModel = globalThis.getChatCompletionModel;
+const getRequestHeaders = globalThis.getRequestHeaders;
+const getStreamingReply = globalThis.getStreamingReply;
+const name1 = globalThis.name1;
+const name2 = globalThis.name2;
+const oai_settings = globalThis.oai_settings;
+const substituteParams = globalThis.substituteParams;
 
 const DRAW_CHAT_COMPLETIONS_STATUS_ENDPOINT = '/api/backends/chat-completions/status';
 const DRAW_CHAT_COMPLETIONS_ENDPOINT = '/api/backends/chat-completions/generate';

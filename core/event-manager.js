@@ -1,4 +1,6 @@
-import { eventSource, event_types } from "../../../../script.js";
+const eventSource = globalThis.eventSource;
+const event_types = globalThis.event_types;
+
 
 const registry = new Map();
 const customEvents = new Map();

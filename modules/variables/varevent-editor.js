@@ -3,10 +3,11 @@
  * @description 条件规则编辑器与 varevent 运行时（常驻模块）
  */
 
-import { getContext } from "../../../../../extensions.js";
-import { getLocalVariable } from "../../../../../variables.js";
 import { createModuleEvents } from "../../core/event-manager.js";
 import { replaceXbGetVarInString, replaceXbGetVarYamlInString, replaceXbGetVarYamlIdxInString } from "./var-commands.js";
+
+const getContext = globalThis.getContext;
+const getLocalVariable = globalThis.getLocalVariable;
 
 const MODULE_ID = 'vareventEditor';
 const LWB_EXT_ID = 'LittleWhiteBox';

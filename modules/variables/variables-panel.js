@@ -1,8 +1,15 @@
-import { extension_settings, getContext, saveMetadataDebounced } from "../../../../../extensions.js";
-import { saveSettingsDebounced, chat_metadata } from "../../../../../script.js";
-import { getLocalVariable, setLocalVariable, getGlobalVariable, setGlobalVariable } from "../../../../../variables.js";
 import { extensionFolderPath } from "../../core/constants.js";
 import { createModuleEvents, event_types } from "../../core/event-manager.js";
+
+const chat_metadata = globalThis.chat_metadata;
+const extension_settings = globalThis.extension_settings;
+const getContext = globalThis.getContext;
+const getGlobalVariable = globalThis.getGlobalVariable;
+const getLocalVariable = globalThis.getLocalVariable;
+const saveMetadataDebounced = globalThis.saveMetadataDebounced;
+const saveSettingsDebounced = globalThis.saveSettingsDebounced;
+const setGlobalVariable = globalThis.setGlobalVariable;
+const setLocalVariable = globalThis.setLocalVariable;
 
 const CONFIG = {
   extensionName: "variables-panel",

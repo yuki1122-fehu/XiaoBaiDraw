@@ -1,9 +1,10 @@
 // gallery-cache.js
 // 画廊和缓存管理模块
 
-import { getContext } from "../../../../../../extensions.js";
-import { saveBase64AsFile } from "../../../../../../utils.js";
 import { triggerImageDownload, guessImageExtension } from "./draw-common.js";
+
+const getContext = globalThis.getContext;
+const saveBase64AsFile = globalThis.saveBase64AsFile;
 
 // ═══════════════════════════════════════════════════════════════════════════
 // 常量

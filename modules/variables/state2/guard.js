@@ -1,4 +1,5 @@
-import { getContext } from '../../../../../../extensions.js';
+const getContext = globalThis.getContext;
+
 import {
     clearAllRules as clearAllCoreRules,
     clearRule as clearCoreRule,

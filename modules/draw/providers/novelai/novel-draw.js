@@ -4,8 +4,6 @@
 // 导入
 // ═══════════════════════════════════════════════════════════════════════════
 
-import { getContext } from "../../../../../../../extensions.js";
-import { saveBase64AsFile } from "../../../../../../../utils.js";
 import { extensionFolderPath } from "../../../../core/constants.js";
 import { createModuleEvents, event_types } from "../../../../core/event-manager.js";
 import { NovelDrawStorage } from "../../../../core/server-storage.js";
@@ -46,6 +44,10 @@ import {
     destroyCloudPresets
 } from './cloud-presets.js';
 import { postToIframe, isTrustedMessage } from "../../../../core/iframe-messaging.js";
+
+const getContext = globalThis.getContext;
+const messageFormatting = globalThis.messageFormatting;
+const saveBase64AsFile = globalThis.saveBase64AsFile;
 import {
     loadLocalDanbooruDB, unloadLocalDanbooruDB,
     searchLocalDanbooru, isDanbooruDBLoaded,
@@ -2837,7 +2839,7 @@ async function generateAndInsertImages({ messageId, onStateChange, skipLock = fa
         onStateChange?.('gen', { current: 0, total: tasks.length });
 
         const results = [];
-        const { messageFormatting } = await import('../../../../../../../script.js');
+        const messageFormatting = globalThis.messageFormatting;
         let successCount = 0;
         let requiresFinalDomSync = false;
 

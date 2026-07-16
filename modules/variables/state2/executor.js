@@ -1,8 +1,10 @@
-import { getContext } from '../../../../../../extensions.js';
-import { getLocalVariable, setLocalVariable } from '../../../../../../variables.js';
 import { extractStateBlocks, computeStateSignature, parseStateBlock } from './parser.js';
 import { generateSemantic } from './semantic.js';
 import { validate, setRule, loadRulesFromMeta, saveRulesToMeta } from './guard.js';
+
+const getContext = globalThis.getContext;
+const getLocalVariable = globalThis.getLocalVariable;
+const setLocalVariable = globalThis.setLocalVariable;
 
 /**
  * =========================

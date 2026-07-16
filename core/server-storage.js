@@ -1,9 +1,10 @@
+const debounce = globalThis.debounce;
+const getRequestHeaders = globalThis.getRequestHeaders;
+
 // ═══════════════════════════════════════════════════════════════════════════
 // 服务器文件存储工具
 // ═══════════════════════════════════════════════════════════════════════════
 
-import { getRequestHeaders } from '../../../../script.js';
-import { debounce } from '../../../../utils.js';
 
 const toBase64 = (text) => btoa(unescape(encodeURIComponent(text)));
 const STORAGE_UPLOAD_TIMEOUT_MS = 5000;
