@@ -1,13 +1,13 @@
 import { extensionFolderPath } from "../../core/constants.js";
 import { createModuleEvents, event_types } from "../../core/event-manager.js";
 
-const chat_metadata = globalThis.chat_metadata;
-const extension_settings = globalThis.extension_settings;
+const chat_metadata = SillyTavern.getContext()?.chatMetadata;
+const extension_settings = SillyTavern.getContext()?.extensionSettings;
 const getContext = globalThis.getContext;
 const getGlobalVariable = globalThis.getGlobalVariable;
 const getLocalVariable = globalThis.getLocalVariable;
-const saveMetadataDebounced = globalThis.saveMetadataDebounced;
-const saveSettingsDebounced = globalThis.saveSettingsDebounced;
+const saveMetadataDebounced = SillyTavern.getContext()?.saveMetadataDebounced;
+const saveSettingsDebounced = SillyTavern.getContext()?.saveSettingsDebounced;
 const setGlobalVariable = globalThis.setGlobalVariable;
 const setLocalVariable = globalThis.setLocalVariable;
 

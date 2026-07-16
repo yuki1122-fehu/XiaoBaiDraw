@@ -9,19 +9,12 @@ import { initSdDraw, cleanupSdDraw } from "./modules/draw/providers/sd-webui/sd-
 import { initComfyDraw, cleanupComfyDraw } from "./modules/draw/providers/comfyui/comfy-draw.js";
 import { setupDrawGenerateInterceptor } from "./modules/draw/shared/draw-common.js";
 
-const extension_settings = globalThis.extension_settings;
-const saveSettingsDebounced = globalThis.saveSettingsDebounced;
-
+// 模块层不访问任何 ST 全局变量，全部在 jQuery 回调中通过 getContext() 获取
 const DRAW_PROVIDER_VALUES = new Set(['disabled', 'novelai', 'sdwebui', 'comfyui']);
 
-extension_settings[EXT_ID] = extension_settings[EXT_ID] || {
-    drawProvider: 'disabled',
-    novelDraw: { enabled: false },
-    sdDraw: { enabled: false },
-    comfyDraw: { enabled: false },
-};
-
-const settings = extension_settings[EXT_ID];
+let settings = null;
+let _extSet = null;      // extension_settings 引用（从 getContext 获取）
+let _saveSet = null;     // saveSettingsDebounced 引用
 
 function normalizeDrawProvider(provider) {
     return DRAW_PROVIDER_VALUES.has(provider) ? provider : 'disabled';
@@ -259,8 +252,8 @@ async function setupSettings() {
 
             await cleanupDrawProvider(prev);
             settings.drawProvider = next;
-            extension_settings[EXT_ID].drawProvider = next;
-            saveSettingsDebounced();
+            _extSet[EXT_ID].drawProvider = next;
+            _saveSet();
 
             try {
                 await initActiveDrawProvider();
@@ -285,14 +278,10 @@ async function setupSettings() {
     });
 }
 
-if (migrateDrawProviderSettings(settings)) {
-    saveSettingsDebounced();
-}
-installDrawFacade();
-setupDrawGenerateInterceptor({ shouldStrip: () => true });
-
+// —— 所有依赖 ST 全局的初始化都推迟到 jQuery 回调中 ——
 jQuery(async () => {
     try {
+        // 加载 style.css（使用本地 extensionFolderPath 获取路径）
         const response = await fetch(`${extensionFolderPath}/style.css`);
         const styleElement = document.createElement('style');
         styleElement.textContent = await response.text();
@@ -301,9 +290,28 @@ jQuery(async () => {
         console.error('[XiaoBaiDraw] 加载 style.css 失败:', e);
     }
 
+    // ---- 从 SillyTavern.getContext() 获取所有 ST API ----
+    const ctx = SillyTavern.getContext();
+    _extSet = ctx.extensionSettings;
+    _saveSet = ctx.saveSettingsDebounced;
+
+    // 初始化设置
+    _extSet[EXT_ID] = _extSet[EXT_ID] || {
+        drawProvider: 'disabled',
+        novelDraw: { enabled: false },
+        sdDraw: { enabled: false },
+        comfyDraw: { enabled: false },
+    };
+    settings = _extSet[EXT_ID];
+
+    if (migrateDrawProviderSettings(settings)) {
+        _saveSet();
+    }
+    installDrawFacade();
+    setupDrawGenerateInterceptor({ shouldStrip: () => true });
+
     try {
-        // 手动加载 settings.html（manifest 的 settings 字段不会自动加载）
-        const ctx = SillyTavern.getContext();
+        // 手动加载 settings.html 并追加到扩展设置面板
         const settingsHtml = await ctx.renderExtensionTemplateAsync('third-party/' + EXT_FOLDER_ID, 'settings');
         document.getElementById('extensions_settings2')?.insertAdjacentHTML('beforeend', settingsHtml);
 

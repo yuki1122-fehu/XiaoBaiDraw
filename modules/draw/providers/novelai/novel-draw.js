@@ -46,7 +46,7 @@ import {
 import { postToIframe, isTrustedMessage } from "../../../../core/iframe-messaging.js";
 
 const getContext = globalThis.getContext;
-const messageFormatting = globalThis.messageFormatting;
+const messageFormatting = SillyTavern.getContext()?.messageFormatting;
 const saveBase64AsFile = globalThis.saveBase64AsFile;
 import {
     loadLocalDanbooruDB, unloadLocalDanbooruDB,
@@ -2839,7 +2839,7 @@ async function generateAndInsertImages({ messageId, onStateChange, skipLock = fa
         onStateChange?.('gen', { current: 0, total: tasks.length });
 
         const results = [];
-        const messageFormatting = globalThis.messageFormatting;
+        const messageFormatting = SillyTavern.getContext()?.messageFormatting;
         let successCount = 0;
         let requiresFinalDomSync = false;
 

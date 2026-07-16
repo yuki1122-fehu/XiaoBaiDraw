@@ -28,11 +28,11 @@ import {
 } from "./var-commands.js";
 import { applyStateForMessage } from "./state2/index.js";
 
-const extension_settings = globalThis.extension_settings;
+const extension_settings = SillyTavern.getContext()?.extensionSettings;
 const getContext = globalThis.getContext;
 const getLocalVariable = globalThis.getLocalVariable;
 const setLocalVariable = globalThis.setLocalVariable;
-const updateMessageBlock = globalThis.updateMessageBlock;
+const updateMessageBlock = SillyTavern.getContext()?.updateMessageBlock;
 import {
     preprocessBumpAliases,
     executeQueuedVareventJsAfterTurn,

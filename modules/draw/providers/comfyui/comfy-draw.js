@@ -37,7 +37,7 @@ import { fetchDrawLlmModels, getLastDrawLlmRequestSnapshot } from "../../shared/
 
 const getContext = globalThis.getContext;
 const getRequestHeaders = globalThis.getRequestHeaders;
-const messageFormatting = globalThis.messageFormatting;
+const messageFormatting = SillyTavern.getContext()?.messageFormatting;
 const saveBase64AsFile = globalThis.saveBase64AsFile;
 import {
     findLastAIMessageId,
@@ -4943,7 +4943,7 @@ export async function generateAndInsertImages({
         message.mes = String(message.mes || '').replace(/\[image:[a-z0-9\-_]+\]/gi, '');
 
         onStateChange?.('gen', { current: 0, total: tasks.length });
-        const messageFormatting = globalThis.messageFormatting;
+        const messageFormatting = SillyTavern.getContext()?.messageFormatting;
         const results = [];
         let successCount = 0;
         let requiresFinalDomSync = false;

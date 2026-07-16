@@ -6,9 +6,9 @@ import { executeSlashCommand } from "../core/slash-command.js";
 import { getIframeBaseScript, getWrapperScript } from "../core/wrapper-inline.js";
 import { postToIframe, getIframeTargetOrigin, getTrustedOrigin } from "../core/iframe-messaging.js";
 
-const default_avatar = globalThis.default_avatar;
-const default_user_avatar = globalThis.default_user_avatar;
-const extension_settings = globalThis.extension_settings;
+const default_avatar = SillyTavern.getContext()?.defaultAvatar;
+const default_user_avatar = SillyTavern.getContext()?.defaultUserAvatar;
+const extension_settings = SillyTavern.getContext()?.extensionSettings;
 const getContext = globalThis.getContext;
 const MODULE_ID = 'iframeRenderer';
 const events = createModuleEvents(MODULE_ID);
